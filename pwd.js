@@ -1,8 +1,9 @@
-module.exports = function () {
+module.exports = function (done) {
   process.stdin.on('data', (data) => {
     const cmd = data.toString().trim();
     if (cmd === 'pwd') {
-      process.stdout.write(process.cwd());
+      const output = process.cwd();
+      done(output);
     }
   });
 };

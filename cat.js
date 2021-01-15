@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-module.exports = function () {
+module.exports = function (done) {
   process.stdin.on('data', (data) => {
     const userInput = data.toString().trim();
     const cmd = userInput.split(' ')[0];
@@ -8,8 +8,8 @@ module.exports = function () {
 
     if (cmd === 'cat') {
       fs.readFile(file, 'utf8', (err, data) => {
-        if (err) throw err;
-        console.log(data);
+        if (err) done('Something went wrong!');
+        done(data);
       });
     }
   });
