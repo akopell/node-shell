@@ -11,3 +11,7 @@ ls();
 const cat = require('./cat');
 
 cat();
+
+const curl = require('./curl');
+
+curl();
